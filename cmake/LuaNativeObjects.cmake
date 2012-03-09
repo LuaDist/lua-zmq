@@ -3,12 +3,13 @@
 #
 macro(GenLuaNativeObjects _src_files_var)
 	set(_new_src_files)
+	find_program( LNO_PROGRAM native_objects )
 	foreach(_src_file ${${_src_files_var}})
 		if(_src_file MATCHES ".nobj.lua")
 			string(REGEX REPLACE ".nobj.lua" ".nobj.c" _src_file_out ${_src_file})
 			string(REGEX REPLACE ".nobj.lua" ".nobj.h" _header_file_out ${_src_file})
 			add_custom_command(OUTPUT ${_src_file_out} ${_header_file_out}
-				COMMAND lua ${LUA_NATIVE_OBJECTS_PATH}/native_objects.lua -outpath ${CMAKE_CURRENT_BINARY_DIR} -gen lua ${_src_file}
+				COMMAND ${LNO_PROGRAM} -outpath ${CMAKE_CURRENT_SOURCE_DIR} -gen lua ${_src_file}
 				WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 				DEPENDS ${_src_file}
 			)
