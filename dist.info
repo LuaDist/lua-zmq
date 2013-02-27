@@ -1,0 +1,37 @@
+type = "x86_64"
+arch = "Ubuntu"
+author = "Robert G. Jakabosky"
+depends = {
+[[lua ~> 5.1]],
+[[libzmq >= 2.0]],
+}
+
+desc = "Lua bindings for the 0MQ library."
+version = "1.1"
+maintainer = "Peter Drahoš"
+files = {
+Runtime = {
+[[lib/lua/zmq.so]],
+[[lib/lua/zmq/poller.lua]],
+[[lib/lua/zmq/threads.lua]],
+}
+,
+Example = {
+[[share/lua-zmq/example//server.lua]],
+[[share/lua-zmq/example//client.lua]],
+[[share/lua-zmq/example//publiser.lua]],
+[[share/lua-zmq/example//server_multipart.lua]],
+[[share/lua-zmq/example//ev_subscriber.lua]],
+[[share/lua-zmq/example//client_multipart.lua]],
+[[share/lua-zmq/example//subscriber.lua]],
+}
+,
+Data = {
+[[share/lua-zmq/COPYRIGHT]],
+}
+,
+}
+
+license = "MIT/X11"
+name = "lua-zmq"
+url = "http://www.lua.org"
